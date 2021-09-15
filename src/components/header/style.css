@@ -1,0 +1,13 @@
+header {
+  align-items: center;
+  background-color: rgb(63, 160, 63);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+li {
+  display: inline;
+  list-style-type: none;
+  margin: 3px;
+}
+
