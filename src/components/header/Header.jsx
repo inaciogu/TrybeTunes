@@ -29,7 +29,6 @@ class Header extends React.Component {
       loading: false,
       userName: user.name,
     });
-    console.log(user);
   }
 
   render() {
