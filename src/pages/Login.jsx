@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Header from '../components/header/Header';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
 
@@ -45,7 +44,6 @@ class Login extends React.Component {
     }
     return (
       <div data-testid="page-login">
-        <Header />
         <h1>Página de Login</h1>
         <form>
           <label htmlFor="input-name">

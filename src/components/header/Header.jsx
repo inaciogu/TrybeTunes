@@ -33,9 +33,9 @@ class Header extends React.Component {
 
   render() {
     const { userName, loading } = this.state;
-    if (loading) return <Loading />;
     return (
       <header data-testid="header-component">
+        {loading && <Loading />}
         <h1 data-testid="header-user-name">
           { userName }
         </h1>

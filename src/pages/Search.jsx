@@ -67,7 +67,9 @@ class Search extends React.Component {
       searchText, loading, requested } = this.state;
     return (
       <div data-testid="page-search">
-        <Header />
+        <header>
+          <Header />
+        </header>
         <form>
           <input
             value={ searchText }
