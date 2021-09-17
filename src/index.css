@@ -17,3 +17,33 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.login-container {
+  width: 100vw;
+height: 100vh;
+background: rgb(250, 250, 250);
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+.login-box {
+  width: 440px;
+  border: 1px solid gray;
+  height: 250px;
+  background: rgb(238, 237, 237);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.login {
+  margin-bottom: 60px;
+  background-color: rgb(97, 97, 97);
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
