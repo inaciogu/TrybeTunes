@@ -4,7 +4,7 @@ import Header from '../components/header/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
-import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor(props) {
@@ -14,15 +14,16 @@ class Album extends React.Component {
       musicsAPI: [],
       requested: false,
       loadingFavorite: false,
+      favSongList: [],
     };
   }
 
   componentDidMount() {
     this.requestMusicsAPI();
+    this.fetchFavoriteMusics();
   }
 
   handleFavorite = async ({ target: { checked } }, music) => {
-    console.log(checked);
     this.setState({
       loadingFavorite: true,
     });
@@ -38,19 +39,21 @@ class Album extends React.Component {
         loadingFavorite: false,
       });
     }
+    this.fetchFavoriteMusics();
   }
 
-  /* fetchFavoriteMusics = async () => {
+  fetchFavoriteMusics = () => {
     this.setState({
-      loading: true,
-    });
-    const favorite = await getFavoriteSongs();
-    this.setState({
-      loading: false,
-      favMusicList: favorite,
+      loadingFavorite: true,
+    }, async () => {
+      const favorites = await getFavoriteSongs();
+      this.setState({
+        favSongList: favorites,
+        loadingFavorite: false,
+      });
     });
   }
- */
+
   requestMusicsAPI = async () => {
     const { match: { params: { id } } } = this.props;
     const musics = await getMusics(id);
@@ -62,7 +65,8 @@ class Album extends React.Component {
   }
 
   renderMusicsAPI = () => {
-    const { musicsAPI, loadingFavorite } = this.state;
+    const { musicsAPI, loadingFavorite, favSongList } = this.state;
+    console.log(favSongList);
     return (
       <section>
         <section>
@@ -75,14 +79,14 @@ class Album extends React.Component {
           key={ music.trackId }
           music={ music }
           handleFavorite={ this.handleFavorite }
+          checked={ favSongList.some((song) => song.trackId === music.trackId) }
         />)) }
       </section>
     );
   }
 
   render() {
-    const { requested, loading, musicsAPI } = this.state;
-    console.log(musicsAPI);
+    const { requested, loading } = this.state;
     return (
       <div data-testid="page-album">
         <header>

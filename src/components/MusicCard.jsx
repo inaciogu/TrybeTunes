@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class MusicCard extends React.Component {
   render() {
     const { music, music:
-      { trackName, previewUrl, trackId }, handleFavorite } = this.props;
+      { trackName, previewUrl, trackId }, handleFavorite, checked } = this.props;
     return (
       <section>
         <section>
@@ -22,6 +22,7 @@ class MusicCard extends React.Component {
               onChange={ (event) => handleFavorite(event, music) }
               type="checkbox"
               id={ trackId }
+              checked={ checked }
             />
           </label>
         </section>
