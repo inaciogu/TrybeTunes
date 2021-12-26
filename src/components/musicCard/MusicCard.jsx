@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './style.css';
 
 class MusicCard extends React.Component {
   render() {
@@ -8,7 +9,7 @@ class MusicCard extends React.Component {
     return (
       <section>
         <section>
-          <p>{trackName}</p>
+          <h4>{trackName}</h4>
           <audio data-testid="audio-component" src={ previewUrl } controls>
             <track kind="captions" />
             O seu navegador não suporta o elemento
@@ -16,14 +17,18 @@ class MusicCard extends React.Component {
             <code>audio</code>
             .
           </audio>
-          <label data-testid={ `checkbox-music-${trackId}` } htmlFor={ trackId }>
-            Favorita
+          <label
+            className="tw-heart-box"
+            data-testid={ `checkbox-music-${trackId}` }
+            htmlFor={ trackId }
+          >
             <input
               onChange={ (event) => handleFavorite(event, music) }
               type="checkbox"
               id={ trackId }
               checked={ checked }
             />
+            <span className="tw-heart" />
           </label>
         </section>
       </section>

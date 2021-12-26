@@ -1,0 +1,14 @@
+.music-card {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+.music-card img {
+  margin-top: 15px;
+}
+
+ul {
+  list-style-type: none;
+}

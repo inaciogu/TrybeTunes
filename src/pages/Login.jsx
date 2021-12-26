@@ -1,4 +1,7 @@
 import React from 'react';
+import { TextField } from '@material-ui/core/';
+import Button from '@mui/material/Button';
+import '../App.css';
 import { Redirect } from 'react-router-dom';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
@@ -44,32 +47,30 @@ class Login extends React.Component {
     }
     return (
       <div className="login-container" data-testid="page-login">
-        <div className="login-box">
-          <div className="login">
-            <h1>Login</h1>
+        <h1>LOGIN</h1>
+        <form>
+          <div className="login-field">
+            <TextField
+              placeholder="Digite seu nome"
+              type="text"
+              name="userName"
+              id="input-name"
+              value={ userName }
+              onChange={ this.handleChange }
+              data-testid="login-name-input"
+            />
           </div>
-          <form>
-            <label htmlFor="input-name">
-              <input
-                placeholder="Digite seu nome"
-                type="text"
-                name="userName"
-                id="input-name"
-                value={ userName }
-                onChange={ this.handleChange }
-                data-testid="login-name-input"
-              />
-            </label>
-            <button
-              disabled={ userName.length < minNumber }
-              type="button"
-              data-testid="login-submit-button"
-              onClick={ this.handleClick }
-            >
-              Entrar
-            </button>
-          </form>
-        </div>
+          <Button
+            color="success"
+            variant="contained"
+            disabled={ userName.length < minNumber }
+            type="button"
+            data-testid="login-submit-button"
+            onClick={ this.handleClick }
+          >
+            Entrar
+          </Button>
+        </form>
       </div>
     );
   }

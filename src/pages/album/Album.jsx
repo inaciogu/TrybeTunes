@@ -1,10 +1,11 @@
 import React from 'react';
+import './style.css';
 import PropTypes from 'prop-types';
-import Header from '../components/header/Header';
-import Loading from '../components/Loading';
-import MusicCard from '../components/MusicCard';
-import getMusics from '../services/musicsAPI';
-import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Header from '../../components/header/Header';
+import Loading from '../../components/Loading';
+import MusicCard from '../../components/musicCard/MusicCard';
+import getMusics from '../../services/musicsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor(props) {
@@ -68,19 +69,27 @@ class Album extends React.Component {
     const { musicsAPI, loadingFavorite, favSongList } = this.state;
     console.log(favSongList);
     return (
-      <section>
+      <section className="music-card">
         <section>
-          <img width="200px" src={ musicsAPI[0].artworkUrl100 } alt="" />
+          <img width="250px" src={ musicsAPI[0].artworkUrl100 } alt="" />
+          <section>
+            <h2 data-testid="album-name">{ musicsAPI[0].collectionName }</h2>
+            <h3 data-testid="artist-name">{ musicsAPI[0].artistName }</h3>
+          </section>
         </section>
-        <h2 data-testid="album-name">{ musicsAPI[0].collectionName }</h2>
-        <h3 data-testid="artist-name">{ musicsAPI[0].artistName }</h3>
-        {loadingFavorite && <Loading />}
-        { musicsAPI.slice(1).map((music) => (<MusicCard
-          key={ music.trackId }
-          music={ music }
-          handleFavorite={ this.handleFavorite }
-          checked={ favSongList.some((song) => song.trackId === music.trackId) }
-        />)) }
+        <section>
+          {loadingFavorite && <Loading />}
+          <ul>
+            { musicsAPI.slice(1).map((music) => (
+              <li key={ music.trackId }>
+                <MusicCard
+                  music={ music }
+                  handleFavorite={ this.handleFavorite }
+                  checked={ favSongList.some((song) => song.trackId === music.trackId) }
+                />
+              </li>)) }
+          </ul>
+        </section>
       </section>
     );
   }

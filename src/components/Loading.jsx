@@ -1,10 +1,11 @@
 import React from 'react';
+import '../App.css';
 
 class Loading extends React.Component {
   render() {
     return (
       <div>
-        <h1>Carregando...</h1>
+        <p style={ { textAlign: 'center' } }>Carregando...</p>
       </div>
     );
   }

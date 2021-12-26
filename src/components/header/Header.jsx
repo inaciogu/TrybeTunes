@@ -35,22 +35,25 @@ class Header extends React.Component {
     const { userName, loading } = this.state;
     return (
       <header data-testid="header-component">
-        {loading && <Loading />}
-        <h1 data-testid="header-user-name">
-          { userName }
-        </h1>
+        <div className="user-box">
+          <img width="32px" src="/perfil.png" alt="" />
+          <h2 data-testid="header-user-name">
+            {loading ? <Loading /> : userName}
+          </h2>
+        </div>
         <nav>
-          <ul>
-            <li>
-              <Link data-testid="link-to-search" to="/search">Search</Link>
-            </li>
-            <li>
-              <Link data-testid="link-to-profile" to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-            </li>
-          </ul>
+          <span>
+            <Link data-testid="link-to-search" to="/search"><a href>Search</a></Link>
+          </span>
+          <span>
+            <Link data-testid="link-to-profile" to="/profile"><a href>Profile</a></Link>
+          </span>
+          <span>
+            <Link data-testid="link-to-favorites" to="/favorites">
+              <a href>Favorites</a>
+
+            </Link>
+          </span>
         </nav>
       </header>
     );
