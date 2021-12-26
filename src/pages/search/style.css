@@ -1,0 +1,31 @@
+.form-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.albums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.albums li {
+  align-items: center;
+  box-shadow: 6px 6px 6px  rgb(204, 203, 203);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px;
+  text-align: center;
+  width: 250px;
+}
+
+.albums li img {
+  display: flex;
+  width: 250px;
+}
+
+.main {
+  text-align: center;
+}
